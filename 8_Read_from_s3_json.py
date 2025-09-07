@@ -4,9 +4,9 @@ from snowflake.snowpark.functions import col
 from snowflake.snowpark.types import IntegerType, StringType, StructField, StructType, DateType,TimestampType,DoubleType
 
 # Replace the below connection_parameters with your respective snowflake account,user name and password
-connection_parameters = {"account":"********",
-"user":"*****",
-"password": "*******",
+connection_parameters = {"account":"ijvunnh-ny22848",
+"user":"pradeep",
+"password": "AbcdAbcdAbcd067$",
 "role":"ACCOUNTADMIN",
 "warehouse":"COMPUTE_WH",
 "database":"DEMO_DB",
@@ -23,6 +23,7 @@ employee_s3_json.cache_result()
 employee_s3_json = employee_s3_json.select(col("$1").as_("new_col")).show()
 
 employee_s3_json = employee_s3_json.select_expr("$1:author","$1:id","$1:cat")
+employee_s3_json.show()
 employee_s3_json.cache_result()
 
 employee_s3_json.schema

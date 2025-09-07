@@ -1,0 +1,12 @@
+conda create --name py12_env --override-channels -c https://repo.anaconda.com/pkgs/snowflake python=3.12 numpy pandas pyarrow
+
+# Create new terminal and enter
+
+conda init
+
+conda activate py12_env
+
+conda install snowflake-snowpark-python
+
+# OPTIONAL
+conda install snowflake-snowpark-python pandas pyarrow

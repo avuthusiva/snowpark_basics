@@ -4,9 +4,9 @@ from snowflake.snowpark.functions import col
 from snowflake.snowpark.types import IntegerType, StringType, StructField, StructType, DateType,TimestampType,DoubleType
 
 # Replace the below connection_parameters with your respective snowflake account,user name and password
-connection_parameters = {"account":"********",
-"user":"*****",
-"password": "*******",
+connection_parameters = {"account":"ijvunnh-ny22848",
+"user":"pradeep",
+"password": "AbcdAbcdAbcd067$",
 "role":"ACCOUNTADMIN",
 "warehouse":"COMPUTE_WH",
 "database":"DEMO_DB",
@@ -24,7 +24,23 @@ StructField("ADDRESS", StringType()),
 StructField("CITY", StringType()),
  StructField("DOJ",DateType())])
 
-# Use session.read.schema and session.read.csv and mention the command to read data from s3
+
+############ Create staging area, run this statement in snowflake. ############
+
+    # use accountadmin
+    # create database if not exists demo_db
+
+    # CREATE OR REPLACE FILE FORMAT demo_db.public.csv_format
+    # TYPE = 'CSV'
+
+    # CREATE OR REPLACE STAGE demo_db.public.my_s3_stage
+    # URL = 's3://snowflakesmpdata'
+    # FILE_FORMAT = demo_db.public.csv_format;
+
+    # ls @demo_db.public.my_s3_stage
+
+############ Use session.read.schema and session.read.csv and mention the command to read data from s3 ############
+
 employee_s3 = session.read.schema(schema).csv('@my_s3_stage/employee/')
 employee_s3.show()
 employee_s3 = session.read.options({"ON_ERROR":"CONTINUE"}).schema(schema).csv('@my_s3_stage/employee/')
@@ -36,7 +52,7 @@ employee_s3.is_cached
 
 employee_s4=employee_s3.cache_result()
 
-type(employee_s5)
+type(employee_s4)
 
 employee_s3.columns
 

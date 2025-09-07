@@ -5,9 +5,9 @@ import time
 
 from snowflake.snowpark.types import IntegerType, StringType, StructField, StructType, DateType
 
-connection_parameters = {"account":"kp41433.ap-southeast-1",
-"user":"pavan",
-"password": "Abc123123",
+connection_parameters = {"account":"ijvunnh-ny22848",
+"user":"pradeep",
+"password": "AbcdAbcdAbcd067$",
 "role":"ACCOUNTADMIN",
 "warehouse":"COMPUTE_WH",
 "database":"DEMO_DB",

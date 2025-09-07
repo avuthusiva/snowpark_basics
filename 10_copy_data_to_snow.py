@@ -19,9 +19,9 @@ from snowflake.snowpark.functions import substr
 from snowflake.snowpark.types import IntegerType, StringType, StructField, StructType, DateType
 
 # Replace the below connection_parameters with your respective snowflake account,user name and password
-connection_parameters = {"account":"********",
-"user":"*****",
-"password": "*******",
+connection_parameters = {"account":"ijvunnh-ny22848",
+"user":"pradeep",
+"password": "AbcdAbcdAbcd067$",
 "role":"ACCOUNTADMIN",
 "warehouse":"COMPUTE_WH",
 "database":"DEMO_DB",
@@ -45,7 +45,6 @@ employee_s3 = session.read.schema(schema).csv('@my_s3_stage/employee/')
 # use copy_into_table method and try to copy the data from s3 to snowflake table, Employee. store the returned result in dataframe, copied_into_result
 copied_into_result = employee_s3.copy_into_table("employee", target_columns=['FIRST_NAME','LAST_NAME','EMAIL','ADDRESS','CITY','DOJ'],on_error="CONTINUE")
 
-copied_into_result
 # The returned result will be a list. Convert this list to snowpark dataframe.
 # Display the output
 copied_into_result = session.createDataFrame(copied_into_result)
